@@ -83,12 +83,84 @@ Console: @66fee51b
 This is obviusly not very helpful for us, yet. What we want is to retrieve information from an object in a readable form, that's why we need to implement a method, the toString() method. As the name suggests, it formats an object to a string.
 
 Let's look at a quick example from [Human.java](https://github.com/florianmoss/learn-oop-java/blob/master/Human.java):
-````java
+```java
    public String toString(){
       return "Human{age="+getAge()+", name="+getName()+", armLeft="+armLeft+", armRight="+armRight+
             ", legLeft="+legLeft+", legRight="+legRight+", familyMembers="+familyMembers;
    }
-````
+```
+What would be the output for the following object?
+```java
+florian = new Human();
+System.out.println(florian.toString()); // long way
+System.out.println(florian); // short way
+```
+Hint: You will need to look at the [Existence Class](https://github.com/florianmoss/learn-oop-java/blob/master/Existence.java), the [Human Class](https://github.com/florianmoss/learn-oop-java/blob/master/Human.java)  and the [Genitals Class](https://github.com/florianmoss/learn-oop-java/blob/master/Genitals.java).
+
+Output: 
+```java
+Human{age=0, name=none, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4, familyMembers=[]
+```
+
+If you got it right, great you understood everything, move on! If not, here is the explanation..
+
+1. We invoked the toString() Method for the Object **florian**. The object **florian** is a **human**, therefore we have to check the [Human Class](https://github.com/florianmoss/learn-oop-java/blob/master/Human.java) and look for the toString()-Method.
+Go open it, and look at it.
+
+2. What now? Well there is a lot to take in, isn't it? So let's break it up:
+```java 
+   "Human{age="+getAge()+",
+```
+The first part is easy enough, it returns a String, the second part invokes the **getAge()**-Method. Is there a **getAge()**-Method in Human?
+
+No there isn't, so where can it be? In the [Existence Class](https://github.com/florianmoss/learn-oop-java/blob/master/Existence.java) of course! The human inheritated it from Existence. So the **getAge()**-Method returns an int value. What is the age? We have to check the constructor for that:  
+```java
+florian = new Human();
+```
+Is there an empty constructor in the [Human Class](https://github.com/florianmoss/learn-oop-java/blob/master/Human.java)? Yes, great. The empty constructor chains to the second constructor, which then invokes the super class constructor. Constructor-inception basically.
+
+In the end **florian** gets initialised with the age == 0.
+
+Therefore **getAge()** returns 0. Exactly the output: 
+```java
+Human{age=0, ...
+```
+
+3. Now we have to break up the Genitals armLeft, armRight, legLeft and LegRight
+The first genital is armLeft, so we should check the [Arm Class](https://github.com/florianmoss/learn-oop-java/blob/master/Arm.java).
+Go, have a look! Did you find a toString()-Method?
+No, good. Where else can we check? Oh, yes sure the Arm inherits from the [Genitals Class](https://github.com/florianmoss/learn-oop-java/blob/master/Genitals.java).
+
+Oh, there seems to be a toString()-Method!
+
+```java
+   @Override
+   public String toString(){
+      String s = "";
+      for(Integer i : genitals){
+         s += " ,"+i;
+      }
+      return s.substring(2);
+   }
+   
+```
+Looks complicated, but it is actually quite simple.
+It loops through the amount of genitals of a genital and returns them without a leading **,** (This is what .substring() does).
+
+Now it's quite easy, we have to check the constructor and see with how many genitals the leftArm has been initialised.
+
+You have done that earlier with the age, it's the same principle.
+
+And from here on the same concept applies to the other genitals.
+
+4. Putting it all together
+When you put all the partial outputs together, you will get exactly this:
+Output: 
+```java
+Human{age=0, name=none, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4, familyMembers=[]
+```
+
+Not too bad, wasn't it!
 
 # try-catch-Exceptions
 
