@@ -5,25 +5,25 @@ This is a small project I jave thrown together to help students at LYIT with the
 1.  [ArrayLists and Methods](#arraylists-and-methods)
 2.  [toString + enhanced for-Loop](#tostring--enhanced-for-loop)
 3.  [try-catch-Exceptions](#try-catch-exceptions)
-4.  [throw + user-Defined Exceptions](throw--user-defined-exceptions)
-5.  [Composition]
-6.  [Inheritance]
-7.  [Override]
-8.  [Polymorphism]
-9.  [Overloading]
-10. [Wrapper Classes]
-11. [instanceOf Operator (not used in code)]
-12. [Casting]
-13. [Abstract Classes]
-14. [equals()]
-15. [Interfaces]
-16. [Comparable + compareTo()]
-17. [sort()]
-18. [Comparator + compare()]
-19. [Bubble Sort]
-20. [Selection Sort]
-21. [Sequential Search]
-22. [Binary Search]
+4.  [throw + user-Defined Exceptions](#throw--user-defined-exceptions)
+5.  [Composition](#composition)
+6.  [Inheritance](#inheritance)
+7.  [Override](#override)
+8.  [Polymorphism](#polymorphism)
+9.  [Overloading](#overloading)
+10. [Wrapper Classes](#wrapper-classes)
+11. [instanceOf Operator (not used in code)](#instanceof-operator-not-used-in-code)
+12. [Casting](#casting)
+13. [Abstract Classes](#abstract-classes)
+14. [equals()](#equals)
+15. [Interfaces](#interfaces)
+16. [Comparable + compareTo()](#comparable--compareto)
+17. [sort()](#sort)
+18. [Comparator + compare()](#comparator--compare)
+19. [Bubble Sort](#bubble-sort)
+20. [Selection Sort](#selection-sort)
+21. [Sequential Search](#sequential-search)
+22. [Binary Search](#binary-search)
 
 # ArrayLists-and-Methods
 
