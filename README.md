@@ -29,9 +29,22 @@ This is a small project I have thrown together to help students at LYIT with the
 # ArrayLists-and-Methods
 [Official Documentation](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html)
 
-**Syntax:** 
+**Syntax: (declare and initialise)** 
 ```java
 ArrayList<Object> identifier = new ArrayList<Object>(size);
+```
+The size doesn't need to be declared, you can leave this empty in most cases.
+
+Or you can declare an ArrayList first and then initialise:
+```java
+ArrayList<Object> identifier;
+identifier = new ArrayList<Object>(size);
+```
+
+**Commonly used methods**
+*Retrieve an object at position i:
+```java
+list.get(i)  // Returns object
 ```
 # toString + enhanced for-Loop
 
