@@ -71,6 +71,25 @@ list.indexOf(i)  // Returns index of object i or -1 if not found
 ```
 # toString + enhanced for-Loop
 
+### toString()
+What would happen if you would execute the following in Java?
+```java
+System.out.println(object);
+```
+You would get the hashCode that looks something like this:
+```java
+Console: @66fee51b
+```
+This is obviusly not very helpful for us, yet. What we want is to retrieve information from an object in a readable form, that's why we need to implement a method, the toString() method. As the name suggests, it formats an object to a string.
+
+Let's look at a quick example from [Human.java](https://github.com/florianmoss/learn-oop-java/blob/master/Human.java):
+````java
+   public String toString(){
+      return "Human{age="+getAge()+", name="+getName()+", armLeft="+armLeft+", armRight="+armRight+
+            ", legLeft="+legLeft+", legRight="+legRight+", familyMembers="+familyMembers;
+   }
+````
+
 # try-catch-Exceptions
 
 # throw + user-Defined Exceptions
