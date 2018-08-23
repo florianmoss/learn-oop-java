@@ -26,6 +26,6 @@ This is a small project I jave thrown together to help students at LYIT with the
 21. Sequential Search
 22. Binary Search
 
-(#arrayLists-and-methods)
+#ArrayLists-and-Methods
 
 Test
