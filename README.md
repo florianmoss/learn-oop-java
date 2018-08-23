@@ -164,7 +164,7 @@ Human{age=0, name=none, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0
 Not too bad, wasn't it!
 
 ### enhanced for-Loop
-
+[Official Documentation](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/for.html)
 The enhanced for-Loop has the same functionality that your regular for-loop. With some small differences.
 
 ```java
@@ -203,8 +203,169 @@ Output: 1 2 3 4 5 6 7 8 9 10
 ``` 
 
 # try-catch-Exceptions
+[Official Documentation](https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
 
+### What is an exception?
+ An exception is an event that occurs during the execution of a program that disrupts the normal flow of instructions.
+ We have already seen a few of these, let's say you have the following:
+ 
+ ```java
+int[] numbers = {1, 2, 3}
+
+System.out.println(numbers[3]); // Leads into OutOfBound error
+   
+``` 
+
+To prevent this you can use someting called try-catch. The name basically says what it does:
+
+### Implementation of try-catch
+ ```java
+int[] numbers = {1, 2, 3}
+
+try{
+   System.out.println(numbers[3]); // Leads into IndexOutOfBoundsException error
+}catch(IndexOutOfBoundsException e){
+   System.out.println(e.getMessage());
+}
+```
+In english: Dear compiler, please **TRY** to compile the line:
+   _ System.out.println(numbers[3]);_
+If you find an error saying **IndexOutOfBoundsException**, go and execute what follows in the curly brackets.
+Simple as that. You can also stack **catches**, for example:
+
+ ```java
+int[] numbers = {1, 2, 3}
+
+try{
+   System.out.println(numbers[3]); // Leads into IndexOutOfBoundsException error
+}catch(IndexOutOfBoundsException e){
+   System.out.println(e.getMessage());
+}catch(IOException e){
+   // do nothing
+}
+```
+
+Just remember, the moment you hit an error in your try-block, you will immediately jump into the catch-block and nothing else will be executed from try.
+
+Most exceptions will be caught this way.
+ 
 # throw + user-Defined Exceptions
+
+This part will go further than what is needed for your exam, but you will learn some important things.
+
+### the _throws_ Keyword
+Every Method or Constructor can **throw** an Exception. This means, when you execute the code and an event occurs that you don't want to occur, you can go and say "Hey Java, throw an exception here and stop this non-sense!". One simple example would be a human with a negative age, we surely don't want that to happen. Go ahead and open the [Human Class](https://github.com/florianmoss/learn-oop-java/blob/master/Human.java).
+
+```java
+   public Human() throws Exception{
+      this(5, 5, 5, 5, 0, "none");
+   }
+
+   public Human(int fingersLeft, int fingersRight, int toesLeft, int toesRight, int age, String name) throws Exception{
+         super(age, name);
+         this.armLeft = new Arm(fingersLeft);
+         this.armRight = new Arm(fingersRight);
+         this.legLeft = new Leg(toesLeft);
+         this.legRight = new Leg(toesRight);
+         this.familyMembers = new ArrayList<String>();
+   }
+```
+When you look closely at the Constructor signature you can spot the **throws Exception** part. We know now that our constructors can throw exceptions, but we don't know what exactly they are throwing, right? So we have to check our [Existence Class](https://github.com/florianmoss/learn-oop-java/blob/master/Existence.java). 
+
+```java
+public Existence(int age, String name) throws Exception{
+      if(age>-1){
+         this.age = age;
+         this.name = name;
+      } else throw new AgeException();
+   }
+```
+What can we observe? We also have the **throws Exception** in the Constructor signature, that's obviuous. What else?
+if the age is -1 or smaller the Constructor will throw a new AgeException()! So we have an event that we don't want to happen, and we go ahead and say: **"Hey Java, stop this non-sense and tell me what non-sense occured!"**.
+
+At this point we don't really know what AgeException is, so let's check it out: [AgeException.java](https://github.com/florianmoss/learn-oop-java/blob/master/AgeException.java)
+
+```java
+public class AgeException extends java.lang.Exception{
+   public AgeException(){
+   
+   }
+   
+   public String getMessage(){
+      return "Age is not valid";
+   }
+
+}
+```
+Looks like not much is going on actually, that's a relief isn't it?! It's a class that inherits from the java.lang.Exception package with an empty constructor and only one method. And the method only returns a String saying "Age is not valid."
+
+So our constructor from the Existence class creates a new AgeException object of the type Exception and throws it. Think about it in a literal sense, when something is thrown, it needs to be caught as well, doesn't it? So where do we catch it? 
+
+Upon calling the constructor of course. 
+
+So where do we evoke the constructor from the [Existence Class](https://github.com/florianmoss/learn-oop-java/blob/master/Existence.java)? Right, in the [Human Class](https://github.com/florianmoss/learn-oop-java/blob/master/Human.java).
+
+Our first instinct would be to write this in the Human class:
+
+```java
+   public Human(){
+      try{ 
+         this(5, 5, 5, 5, 0, "none");
+      } catch(Exception e){
+         System.out.println(e.getMessage());
+      }
+   }
+
+   public Human(int fingersLeft, int fingersRight, int toesLeft, int toesRight, int age, String name) {
+         try{
+            super(age, name);
+         } catch(Exception e){
+         System.out.println(e.getMessage());
+         }
+         this.armLeft = new Arm(fingersLeft);
+         this.armRight = new Arm(fingersRight);
+         this.legLeft = new Leg(toesLeft);
+         this.legRight = new Leg(toesRight);
+         this.familyMembers = new ArrayList<String>();
+   }
+```
+Because we want to catch the thrown Exception immediately. I would encourage you to download the files and change the code in the human.java constructor to the above. Try it and see what happens!
+
+**You had a compiler issue. But why is that?**
+
+Whenever we invoke a super() constructor, more about that in the [Inheritance](#inheritance) section, we are forced to invoke the super() as the first line of code, so we can't use the **try{** -block. What a shame, the most intuitive solution doesn't work.
+
+So what other option do we have? We can **throw** the exception even further down, so let's try that:
+
+```java
+   public Human() throws Exception{
+      this(5, 5, 5, 5, 0, "none");
+   }
+
+   public Human(int fingersLeft, int fingersRight, int toesLeft, int toesRight, int age, String name) throws Exception{
+         super(age, name);
+         this.armLeft = new Arm(fingersLeft);
+         this.armRight = new Arm(fingersRight);
+         this.legLeft = new Leg(toesLeft);
+         this.legRight = new Leg(toesRight);
+         this.familyMembers = new ArrayList<String>();
+   }
+```
+
+Now, everytime the human constructor is being called, we will have to catch the exception. And where do we create a human? In the [Main Class](https://github.com/florianmoss/learn-oop-java/blob/master/main_starter.java) of course.
+
+This is how it's gonna look:
+```java
+      try{         
+         max = new Human(5, 5, 5, 5, -2, "Max");
+         System.out.println(max);
+      }catch(Exception e){
+         System.out.println(e.getMessage());
+      }
+```
+ When we run it, we will see the expected output. 
+ 
+ Make sure you really understand what is happening, this is a bit tricky to understand at first, especially with throwing exceptions through 2 constructors.
 
 # Composition
 
