@@ -464,6 +464,108 @@ Human h1 = new Human(new Arm(5), new Arm(5), new Leg(5), new Leg(5), 0, "Test");
 
 # Inheritance
 
+Inheritance is important, make sure you really understand it. We just looked at [Composition](#composition), Inheritance is basically the same but different.
+
+Composition means **has-a-Relationship**, a human has-a-Leg for example.
+Inheritance means **is-a-Relationship**, a human is an Existence, or a Dog is an animal. A chair is furniture.
+
+Remember the difference!!!
+
+Inheritance means that you can reuse functionality very easily and you can extend it quite easy. 
+
+Let's again start with an example:
+
+Inheritance means there is a **superclass** and a **subclass**. The superclass is as the name suggests a class that is above the subclass. Animal - Dog, Furniture - Chair, Existence - Human all have this relationship to each other.
+
+### Syntax
+
+```java
+public class Human extends Existence{   // extends means that the Human upon creation is also an Existence
+   public Human(...){
+      super();    // super() needs to be called first in your constructor
+      ...
+   }   
+}
+```
+
+### this vs. super 
+
+When you want to make it obvious that you are accessing a field from **this** class you use the **this** Keyword, by now you should know that. The **super** Keyword means that you are calling a field or method not from **this** but from **superclass**.
+
+### Example
+I will use a very simple example here, Animal and Dog.
+
+Animal Class
+```java
+public class Animal{
+   private int age;      // Every animal has an age.
+   private String name;  // Every animal has a name.
+   
+   
+   public Animal(int age, String name){  // An animal we create has an age and a name
+      this.age = age;
+      this.name = name;
+   }
+   
+   public void eat(){                    // Every animal can eat
+      System.out.println("Animal eat() invoked");
+   }
+   
+   public int getAge(){
+      return age;
+   }
+   
+   public void setAge(int age){
+      this.age = age;
+   }
+}
+```
+
+Dog Class
+```java
+public class Dog extends Animal{    // A Dog is an animal but receives also all functionality from the Animal class 
+   private int legs;                // A Dog can have additional fields, but doesn't need to
+   
+   public Dog(int age, String name, int legs){ //A Dog needs to have an Age, a Name (because he is an animal) and Legs (because he is a                                          Dog)
+      super(age, name);    // calls the Animal constructor with the paramters age and name
+      this.legs = legs;    // initialises the legs
+   }
+   
+   @Override
+   public void eat(){ 
+      System.out.println("Dog eat() invoked");
+   }
+}
+```
+
+Tester class
+```java
+public class tester{
+   public static void main(String[] args){
+      Dog dog = new Dog(1, "Sergej", 4);               // invokes constructor in Dog.java
+      Animal animal = new Animal(1, "Theresa");        // invokes constructor in Animal.java
+      
+      dog.eat();                                       // Output: "Dog eat() invoked", calls eat() first from Dog class
+      dog.super.eat();                                 // Output: "Animal eat() invoked",specifically invokes from animal superclass
+      
+      dog.age;                                         // Compiler Error, age is private to Animal
+      dog.getAge();                                    // returns 1 because getAge() is a public method
+      dog.setAge(3);                                   // works as well because setAge() is public
+      
+      animal.age;                                      // returns 1;
+      animal.getAge();                                 // returns 1 because getAge() an animal specific method
+      animal.setAge(3);                                // same as above
+   }
+}
+```
+
+I would advise to look at [Existence Class](https://github.com/florianmoss/learn-oop-java/blob/master/Existence.java)and [Human Class](https://github.com/florianmoss/learn-oop-java/blob/master/Human.java).
+
+Then go and try to reproduce the Animal - Dog relation in 2 classes and come up with more methods. What could be Dog specific? Maybe a race, a bark method and a drink method. Write a tester to invoke these methods and make sure you really understand what is going on.
+
+You will understand it by doing, I promise.
+
+
 # Override 
 
 # Polymorphism
