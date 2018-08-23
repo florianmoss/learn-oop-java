@@ -42,10 +42,11 @@ identifier = new ArrayList<Object>(size);
 ```
 
 **Commonly used methods**
-*Retrieve an object at position i:
+* Retrieve an object at position i:
 ```java
 list.get(i)  // Returns object
 ```
+* 
 # toString + enhanced for-Loop
 
 # try-catch-Exceptions
