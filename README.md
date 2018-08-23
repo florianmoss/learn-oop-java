@@ -369,6 +369,99 @@ This is how it's gonna look:
 
 # Composition
 
+[Another explanation](https://www.journaldev.com/1325/composition-in-java-example)
+
+Composition is a fancy word for Objects in Objects. Sounds a bit weird at first, but it's super simple, I promise!
+
+Let's look at an example first:
+
+```java
+public class Human extends Existence{
+   private Arm armLeft;
+   private Arm armRight;
+   private Leg legLeft;
+   private Leg legRight;
+   
+   ....
+   
+ ```
+ As you can see, instead of having just primitive datatypes as fields, we now have objects as a field. This is composition.
+ 
+ Composition is also knows as a **has-a-Relationship**. 
+ A human has an arm, or two at best.
+ A human has two legs.
+ 
+ A book has-a-Author
+ A computer has-a-motherboard
+ 
+ And so forth.
+ 
+ The same way you would write your **getter and setter - Methods** you can also write these for objects:
+ 
+ ```java 
+ // Gain access to composition objects
+   public Arm getLeftArm(){
+      return armLeft;
+   }
+   
+   public Arm getRightArm(){
+      return armRight;
+   }
+   
+   public Leg getLeftLeg(){
+      return legLeft;
+   }
+   
+   public Leg getRightLeg(){
+      return legRight;
+   }
+```
+
+This way you can access all fields and methods from the Arm and Leg objects within your human.
+Some examples you can find [here](https://github.com/florianmoss/learn-oop-java/blob/master/main_starter.java).
+
+For the constructor we have a variety of options:
+
+**Option 1 - call the constructor with primitive Datatypes - also my implementation**
+```java
+public Human(int fingersLeft, int fingersRight, int toesLeft, int toesRight, int age, String name) {
+         super(age, name);
+         this.armLeft = new Arm(fingersLeft); // initialise the object here
+         this.armRight = new Arm(fingersRight);
+         this.legLeft = new Leg(toesLeft);
+         this.legRight = new Leg(toesRight);
+         this.familyMembers = new ArrayList<String>();
+   }
+   
+```
+
+Creating a human will work this way:
+```java
+Human h1 = new Human(5, 5, 5, 5, 0, "Test");
+Human h2 = new Human();
+```
+
+**Option 2 - call the constructor with Objects - more Elegant way**
+ ```java
+public Human(Arm armLeft, Arm armRight, Leg legLeft, Leg legRight, int age, String name) {
+         super(age, name);
+         this.armLeft = armLeft;
+         this.armRight = armRight;
+         this.legLeft = legLeft;
+         this.legRight = legRight
+         this.familyMembers = new ArrayList<String>();
+   }
+   
+```
+
+Creating a human will work this way:
+```java
+Human h1 = new Human(new Arm(5), new Arm(5), new Leg(5), new Leg(5), 0, "Test");
+```
+
+**Choose one of the two options and be consistent with it, it doesn't matter how you do choose to do it (Except when your boss tells you to do it one way).**
+ 
+
 # Inheritance
 
 # Override 
