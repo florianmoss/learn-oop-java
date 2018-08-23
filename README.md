@@ -2,7 +2,7 @@
 # Introduction
 
 This is a small project I jave thrown together to help students at LYIT with their exams in **Object Orientated Programming 3**. Feel free to share this resource with your friends and copy from it whenever you need it. I will go through the following chapters in this tutorial:
-1.  [ArrayLists and Methods](#ArrayLists-and-Methods)
+1.  [ArrayLists and Methods](#arraylists-and-methods)
 2.  toString + enhanced for-Loop
 3.  try-catch-Exceptions
 4.  throw + user-Defined Exceptions
