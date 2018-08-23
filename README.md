@@ -29,6 +29,11 @@ This is a small project I have thrown together to help students at LYIT with the
 # ArrayLists-and-Methods
 [Official Documentation](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html)
 
+An ArrayList is a more complex Array. An array needs to be initialised with a fixed size, whereas an ArrayList has the capability to grow and shrink as needed. Unfortunately an ArrayList can't directly store primitive datatypes, but we can solve that with [Wrapper Classes](#wrapper-classes). Arrays are also embedded in the java.lang package and therefore doesn't neeed to be imported. To access functionality of ArrayLists we need to import it with:
+```java
+import java.util.ArrayList;
+```
+
 **Syntax: (declare and initialise)** 
 ```java
 ArrayList<Object> identifier = new ArrayList<Object>(size);
@@ -46,7 +51,24 @@ identifier = new ArrayList<Object>(size);
 ```java
 list.get(i)  // Returns object
 ```
-* 
+* Add an object, add an object at position:
+```java
+list.add(i)  // Adds object i
+list.add(index, i)  // Adds object i at index
+```
+* Empty the ArrayList:
+```java
+list.clear()  // Clears the ArrayList
+```
+* Remove an object, remove an object at position:
+```java
+list.remove(i)  // remove object i
+list.remove(index)  // remove object at index
+```
+* Index of Object:
+```java
+list.indexOf(i)  // Returns index of object i or -1 if not found
+```
 # toString + enhanced for-Loop
 
 # try-catch-Exceptions
