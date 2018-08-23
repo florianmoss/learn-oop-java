@@ -1,7 +1,8 @@
 
 # Introduction
 
-This is a small project I jave thrown together to help students at LYIT with their exams in **Object Orientated Programming 3**. Feel free to share this resource with your friends and copy from it whenever you need it. I will go through the following chapters in this tutorial:
+This is a small project I have thrown together to help students at LYIT with their exams in **Object Orientated Programming 3**. This tutorial deals with Java code, which is what is being used for the exam. If you are interested in Processing, check out my other projects [Asteroids Game](https://github.com/florianmoss/asteroidsGame-Java-Processing) and [Maze Solver](https://github.com/florianmoss/mazeSolver-Java-Processing). These will deal with an actual implementation whereas the goal for this project is to help you understand the underlying concepts. Feel free to share this resource with your friends and copy from it whenever you need it. I will go through the following chapters in this tutorial:
+
 1.  [ArrayLists and Methods](#arraylists-and-methods)
 2.  [toString + enhanced for-Loop](#tostring--enhanced-for-loop)
 3.  [try-catch-Exceptions](#try-catch-exceptions)
@@ -26,7 +27,12 @@ This is a small project I jave thrown together to help students at LYIT with the
 22. [Binary Search](#binary-search)
 
 # ArrayLists-and-Methods
+[Official Documentation](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html)
 
+**Syntax:** 
+```java
+ArrayList<Object> identifier = new ArrayList<Object>(size);
+```
 # toString + enhanced for-Loop
 
 # try-catch-Exceptions
