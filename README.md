@@ -104,10 +104,11 @@ Human{age=0, name=none, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0
 
 If you got it right, great you understood everything, move on! If not, here is the explanation..
 
-1. We invoked the toString() Method for the Object **florian**. The object **florian** is a **human**, therefore we have to check the [Human Class](https://github.com/florianmoss/learn-oop-java/blob/master/Human.java) and look for the toString()-Method.
+1. **Start at the beginning**
+We invoked the toString() Method for the Object **florian**. The object **florian** is a **human**, therefore we have to check the [Human Class](https://github.com/florianmoss/learn-oop-java/blob/master/Human.java) and look for the toString()-Method.
 Go open it, and look at it.
 
-2. What now? Well there is a lot to take in, isn't it? So let's break it up:
+2. **What now? Well there is a lot to take in, isn't it? So let's break it up**:
 ```java 
    "Human{age="+getAge()+",
 ```
@@ -126,7 +127,7 @@ Therefore **getAge()** returns 0. Exactly the output:
 Human{age=0, ...
 ```
 
-3. Now we have to break up the Genitals armLeft, armRight, legLeft and LegRight
+3. **Now we have to break up the Genitals armLeft, armRight, legLeft and LegRight**
 The first genital is armLeft, so we should check the [Arm Class](https://github.com/florianmoss/learn-oop-java/blob/master/Arm.java).
 Go, have a look! Did you find a toString()-Method?
 No, good. Where else can we check? Oh, yes sure the Arm inherits from the [Genitals Class](https://github.com/florianmoss/learn-oop-java/blob/master/Genitals.java).
@@ -153,7 +154,7 @@ You have done that earlier with the age, it's the same principle.
 
 And from here on the same concept applies to the other genitals.
 
-4. Putting it all together
+4. **Putting it all together**
 When you put all the partial outputs together, you will get exactly this:
 Output: 
 ```java
@@ -161,6 +162,45 @@ Human{age=0, name=none, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0
 ```
 
 Not too bad, wasn't it!
+
+### enhanced for-Loop
+
+The enhanced for-Loop has the same functionality that your regular for-loop. With some small differences.
+
+```java
+for(int i=0; i<10; i++) 
+   System.out.print(i+ " ");
+   
+Output: 0 1 2 3 4 5 6 7 8 9   
+``` 
+This is your regular for-Loop, nothing really special.
+Let's look at the enhanced for-Loop:
+
+```java
+for(int i : new int[10])
+   System.out.print(i+ " ");
+   
+Output: 0 0 0 0 0 0 0 0 0 0 
+``` 
+The syntax is slightly different as you can see:
+```java
+for(type o : IterableObject)
+   System.out.print(o+ " ");
+``` 
+We can basically iterate through everything that allows us to iterate through, 2 concepts you definitely know of, right?
+**Arrays and ArrayLists**. The enhanced for-loop allows us to iterate through all elements that are stored in an iterable object. Simple as that. The benefit is that you don't have to define the size or think about **OutOfBoundExceptions**, you can savely iterate through all elements. The drawback is that you can't return the position.
+
+Maybe another example:
+```java
+ArrayList<Integer> oneToTen = new ArrayList<Integer>();  // ArrayList that stores Integer objects
+for(int i=1; i<11; i++)  // Store the values 1-10 in oneToTen ArrayList
+   oneToTen.add(i);       
+   
+for(Integer i : oneToTen)     // iterate through all objects in oneToTen of the type Integer
+   System.out.print(i+ " ");
+   
+Output: 1 2 3 4 5 6 7 8 9 10
+``` 
 
 # try-catch-Exceptions
 
