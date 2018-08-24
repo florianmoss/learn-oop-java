@@ -17,7 +17,7 @@ public class Cell extends Existence{
    
    @Override 
    public String toString(){
-      return "Human{age="+getAge()+", name="+getName()+"}";
+      return "Cell{age="+getAge()+", name="+getName()+"}";
    }
    
    public boolean equals(Cell c){
