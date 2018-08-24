@@ -173,7 +173,6 @@ Oh, there seems to be a toString()-Method!
       }
       return s.substring(2);
    }
-
 ```
 
 Looks complicated, but it is actually quite simple.
@@ -253,7 +252,6 @@ We have already seen a few of these, let's say you have the following:
 int[] numbers = {1, 2, 3}
 
 System.out.println(numbers[3]); // Leads into OutOfBound error
-
 ```
 
 To prevent this you can use someting called try-catch. The name basically says what it does:
@@ -432,7 +430,6 @@ public class Human extends Existence{
    private Leg legRight;
 
    ....
-
 ```
 
 As you can see, instead of having just primitive datatypes as fields, we now have objects as a field. This is composition.
@@ -483,7 +480,6 @@ public Human(int fingersLeft, int fingersRight, int toesLeft, int toesRight, int
          this.legRight = new Leg(toesRight);
          this.familyMembers = new ArrayList<String>();
    }
-
 ```
 
 Creating a human will work this way:
@@ -504,7 +500,6 @@ public Human(Arm armLeft, Arm armRight, Leg legLeft, Leg legRight, int age, Stri
         this.legRight = legRight
         this.familyMembers = new ArrayList<String>();
   }
-
 ```
 
 Creating a human will work this way:
@@ -789,7 +784,6 @@ That's all you need to remember basically. Overloading means that you can have m
    public void eat(String food, int amount){
        System.out.println("Human eats " + food + ", " + amount + " times.");
    }
-
 ```
 
 # Wrapper Classes
@@ -872,7 +866,7 @@ You can also use the **instanceof** Keyword in combination with casting to avoid
 
 Abstract classes are more or less an evolution of [Inheritance](#inheritance). Let's look at our example, we have an Existence class from where the Human class and the Cell class inherit from. But do we actually want to be able to create an Existence object? Not really, we just want the subclasses to have certain properties, but an Existence itself doesn't exist, so we wan't to prevent this, this is where we can use **Abstract Classes**.
 
-### Syntax
+###Syntax
 
 ```java
       public abstract class Existence{
@@ -882,7 +876,7 @@ Abstract classes are more or less an evolution of [Inheritance](#inheritance). L
 
 The **abstract** Keyword indicated that you can't create an object of the form Existence. But it can still work as a superclass.
 
-### Abstract Methods
+###Abstract Methods
 
 You can also provide abstract methods, these methods are meant to be implemanted by the subclass. They **HAVE** to be implemented by any subclass in fact. Abstract methods only have a method signature but no method body. Abstract methods also **HAVE** to be **public**, for obvious reasons. An Example will explain it best though:
 
@@ -962,7 +956,7 @@ Interfaces are a natural evolution of inheritance. The problem with inheritance 
 
 Remember the following: **All interfaces are a description of promised behaviour.**.
 
-### Syntax
+###Syntax
 
 The interface:
 
@@ -982,11 +976,11 @@ public class ClassName implements InterfaceName<T>{
 }
 ```
 
-We can implement more than one interface, just put a **,** between them.
+We can implement more than one interface, just put a ',' between them.
 
 # Comparable + compareTo()
 
-      ### Comparable Interface
+###Comparable Interface
 
 ```java
      public interface Comparable<T>{
