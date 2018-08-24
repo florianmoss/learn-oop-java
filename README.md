@@ -866,7 +866,7 @@ You can also use the **instanceof** Keyword in combination with casting to avoid
 
 Abstract classes are more or less an evolution of [Inheritance](#inheritance). Let's look at our example, we have an Existence class from where the Human class and the Cell class inherit from. But do we actually want to be able to create an Existence object? Not really, we just want the subclasses to have certain properties, but an Existence itself doesn't exist, so we wan't to prevent this, this is where we can use **Abstract Classes**.
 
-###Syntax
+### Syntax
 
 ```java
       public abstract class Existence{
@@ -876,7 +876,7 @@ Abstract classes are more or less an evolution of [Inheritance](#inheritance). L
 
 The **abstract** Keyword indicated that you can't create an object of the form Existence. But it can still work as a superclass.
 
-###Abstract Methods
+### Abstract Methods
 
 You can also provide abstract methods, these methods are meant to be implemanted by the subclass. They **HAVE** to be implemented by any subclass in fact. Abstract methods only have a method signature but no method body. Abstract methods also **HAVE** to be **public**, for obvious reasons. An Example will explain it best though:
 
@@ -922,7 +922,7 @@ Cell Class:
 
 We have covered the equals() method in the first year already, that's why I will keep it short here and give you only an example.
 
-###Syntax
+### Syntax
 
 ```java
       public boolean equals(Object o){
@@ -930,7 +930,7 @@ We have covered the equals() method in the first year already, that's why I will
       }
 ```
 
-###Example
+### Example
 
 Cell Class:
 
@@ -956,7 +956,7 @@ Interfaces are a natural evolution of inheritance. The problem with inheritance 
 
 Remember the following: **All interfaces are a description of promised behaviour.**.
 
-###Syntax
+### Syntax
 
 The interface:
 
@@ -980,7 +980,7 @@ We can implement more than one interface, just put a ',' between them.
 
 # Comparable + compareTo()
 
-###Comparable Interface
+### Comparable Interface
 
 ```java
      public interface Comparable<T>{
