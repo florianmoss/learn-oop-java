@@ -567,10 +567,124 @@ You will understand it by doing, I promise.
 
 
 # Override 
+[Another Documentation](https://www.geeksforgeeks.org/overriding-in-java/)
+
+Override means that you are overwriting a method. You have seen the [toString()](#tostring--enhanced-for-loop) Method for example or the **Dog.eat()** Method in the [Inheritance section](#inheritance). 
+
+Both methods are already existent but have a form of return that we do not want, therefore we can change it. 
+You don't need to show in your code that you overwrote something, but you certainly can and you should - so other people know what you have done when they read your code.
+
+### Syntax
+
+```java
+@Override
+public String toString(){
+   return //whatever you need
+}
+```
 
 # Polymorphism
+Polymorphism is again, just a fancy word for saying:
+**One line of code invokes different behaviour at runtime**
+
+It often occurs when the sublclass overrides a method in the superclass. You can check out the [Inheritance section](#inheritance) and the the [Override section](#override) to find more about this.
+
+In other words, Polymorphism is the result of Inheritance in combination with Override.
+
+### Code Example
+Open the [main_starter Class](https://github.com/florianmoss/learn-oop-java/blob/master/main_starter.java) at line 69.
+
+```java
+      ArrayList<Existence> existenceList = new ArrayList<Existence>();
+      try{
+         for(int i=0; i<20; i++){
+            existenceList.add(new Human(5, 5, 5, 5, i, ("Name"+i)));
+         }
+         existenceList.add(new Cell());
+         existenceList.add(new Cell());
+      }catch(Exception e){
+         System.out.println(e.getMessage());
+      }
+      
+
+      // --> This is Polymorphism, 1 Line of code but at execution with
+      //     different execution/meaning.
+      for(Existence h : existenceList){
+         System.out.println(h);
+      }
+ ```
+ 
+ What output do you expect for the second for-loop:
+ ```java
+ for(Existence h : existenceList){
+         System.out.println(h);
+ }
+ ```
+ 
+ First of all you need to understand the section about [toString() and enhanced for-loops](#tostring--enhanced-for-loop). Then we know, what to do, right? We need to check if the is a different implementation for **toString()** for the **Cell** and the **Human**, first we should check **Existence**, since it is the superclass for both.
+ 
+ Did you find a toString() Method in [Existence.java](https://github.com/florianmoss/learn-oop-java/blob/master/Existence.java)?
+ 
+ No, good. Let's move on then.
+ 
+ A [**Cell**](https://github.com/florianmoss/learn-oop-java/blob/master/Cell.java) seems to have no additional fields, only the name and age inherited from [**Existence**](https://github.com/florianmoss/learn-oop-java/blob/master/Existence.java). 
+ 
+ ```java
+    @Override 
+   public String toString(){
+      return "Cell{age="+getAge()+", name="+getName()+"}";
+   }
+ ```
+ 
+ A [**Human**](https://github.com/florianmoss/learn-oop-java/blob/master/Human.java) contains also a toString() Method, as we have discussed in detail [here](#tostring--enhanced-for-loop).
+ 
+ ```java
+   public boolean equals(Human h){
+      return (this.getAge()==h.getAge() && this.getName().equals(h.getName()) && 
+                  this.getLeftArm().equals(h.getLeftArm()) && this.getRightArm().equals(h.getRightArm()) &&
+                     this.getLeftLeg().equals(h.getLeftLeg()) && this.getRightLeg().equals(h.getRightLeg()));
+   }
+```
+Back to our Loop, we are now able to say, that the Output is:
+
+```java
+Human{age=0, name=Name0, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4, familyMembers=[]
+Human{age=1, name=Name1, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4, familyMembers=[]
+Human{age=2, name=Name2, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4, familyMembers=[]
+Human{age=3, name=Name3, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4, familyMembers=[]
+Human{age=4, name=Name4, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4, familyMembers=[]
+Human{age=5, name=Name5, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4, familyMembers=[]
+Human{age=6, name=Name6, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4, familyMembers=[]
+Human{age=7, name=Name7, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4, familyMembers=[]
+Human{age=8, name=Name8, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4, familyMembers=[]
+Human{age=9, name=Name9, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4, familyMembers=[]
+Human{age=10, name=Name10, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4,familyMembers=[]
+Human{age=11, name=Name11, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4,familyMembers=[]
+Human{age=12, name=Name12, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4,familyMembers=[]
+Human{age=13, name=Name13, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4,familyMembers=[]
+Human{age=14, name=Name14, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4,familyMembers=[]
+Human{age=15, name=Name15, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4,familyMembers=[]
+Human{age=16, name=Name16, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4,familyMembers=[]
+Human{age=17, name=Name17, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4,familyMembers=[]
+Human{age=18, name=Name18, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4,familyMembers=[]
+Human{age=19, name=Name19, armLeft=0 ,1 ,2 ,3 ,4, armRight=0 ,1 ,2 ,3 ,4, legLeft=0 ,1 ,2 ,3 ,4, legRight=0 ,1 ,2 ,3 ,4,familyMembers=[]
+Cell{age=0, name=Cell}
+Cell{age=0, name=Cell}
+
+```
+
+### Why is that so fascinating?
+Well let's look again at the loop:
+ ```java
+ for(Existence h : existenceList){
+         System.out.println(h);
+ }
+ ```
+ 
+ We have one line of code **System.out.println(h)** but at execution it invokes different toString() Methods. From a **Human** and from a **Cell**. That's pretty cool isn't it?
 
 # Overloading
+
 
 # Wrapper Classes
 
