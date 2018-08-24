@@ -684,9 +684,76 @@ Well let's look again at the loop:
  We have one line of code **System.out.println(h)** but at execution it invokes different toString() Methods. From a **Human** and from a **Cell**. That's pretty cool isn't it?
 
 # Overloading
+* MUST change the argument list
+* CAN change the return type
 
+That's all you need to remember basically. Overloading means that you can have multiple constructors and/or methods with the same name.
+
+### Code Example
+```java
+    // Constructor Overloading
+    public Human() throws Exception{
+      this(5, 5, 5, 5, 0, "none");
+   }
+
+   public Human(int fingersLeft, int fingersRight, int toesLeft, int toesRight, int age, String name) throws Exception{
+         super(age, name);
+         this.armLeft = new Arm(fingersLeft);
+         this.armRight = new Arm(fingersRight);
+         this.legLeft = new Leg(toesLeft);
+         this.legRight = new Leg(toesRight);
+         this.familyMembers = new ArrayList<String>();
+   }
+   
+   // Method Overloading
+   
+   public void eat(){
+      System.out.println("Human eats.");
+   }
+   
+   // Invalid, because we MUST change the argument list !!!
+//  public String eat(){
+//     return "Human eats."
+//  }
+
+   // Valid
+   public String eat(String food){
+      return "Human eats " + food;
+   }
+   
+   // Valid
+   public void eat(String food, int amount){
+       System.out.println("Human eats " + food + ", " + amount + " times.");
+   }
+   
+```
 
 # Wrapper Classes
+
+| Primitive Type | Wrapper Class | 
+| -------------- |:-------------:| 
+| boolean        | Boolean       |    
+| byte           | Byte          |  
+| char           | Character     |
+| float          | Float         |
+| int            | Integer       |
+| long           | Long          |
+| short          | Short         |
+| double         | Double        |
+
+Primitive datatypes limit us in their functionality. As the name suggest they are primitive - therefore they are not good for much because they can't do much.
+
+Why not create an object that is an int with more functionality? And call it [Integer](https://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html). 
+
+Can you think of a simple usecase for this? 
+
+```java
+ ArrayList<Integer> numbers = new ArrayList<Integer>();
+ ```
+ ...well we know that we can't use ArrayLists with primitive datatypes, hence we need to use an object, here: Integer.
+ 
+ Not needed for this class, but I think you should know of is [Autoboxing and Unboxing](https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html). Take 5 min to read the official documentation and it will all make a lot more sense.
+
 
 # instanceOf Operator (not used in code)
 
