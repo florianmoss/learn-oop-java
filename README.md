@@ -2,7 +2,7 @@
 
 This is a small project I have thrown together to help students at LYIT with their exams in **Object Orientated Programming 3**. This tutorial deals with Java code, which is what is being used for the exam. If you are interested in Processing, check out my other projects [Asteroids Game](https://github.com/florianmoss/asteroidsGame-Java-Processing) and [Maze Solver](https://github.com/florianmoss/mazeSolver-Java-Processing). These will deal with an actual implementation whereas the goal for this project is to help you understand the underlying concepts. Feel free to share this resource with your friends and copy from it whenever you need it.
 
-!()[https://github.com/florianmoss/learn-oop-java/blob/master/uml.PNG]
+![https://github.com/florianmoss/learn-oop-java/blob/master/uml.PNG](https://github.com/florianmoss/learn-oop-java/blob/master/uml.PNG)
 
 I will go through the following chapters in this tutorial:
 
