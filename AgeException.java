@@ -1,4 +1,4 @@
-public class AgeException extends java.lang.Exception{
+public class AgeException extends Exception{
    public AgeException(){
    
    }
