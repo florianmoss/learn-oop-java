@@ -20,10 +20,5 @@ public class Arm extends Genitals{
       }
       System.out.println("Finger "+ index + " was not found.");
       return false;
-   }
-   
-
-    
-   
-   
+   } 
 }
