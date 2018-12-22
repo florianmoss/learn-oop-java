@@ -67,7 +67,5 @@ public class Human extends Existence{
       return (this.getAge()==h.getAge() && this.getName().equals(h.getName()) && 
                   this.getLeftArm().equals(h.getLeftArm()) && this.getRightArm().equals(h.getRightArm()) &&
                      this.getLeftLeg().equals(h.getLeftLeg()) && this.getRightLeg().equals(h.getRightLeg()));
-   }
-
-     
+   }  
 }
