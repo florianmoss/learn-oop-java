@@ -22,9 +22,5 @@ public class Cell extends Existence{
    
    public boolean equals(Cell c){
       return (this.getAge()==c.getAge() && this.getName().equals(c.getName()));
-   }
-   
-   
-   
-   
+   } 
 }
