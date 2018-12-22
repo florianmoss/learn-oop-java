@@ -31,7 +31,5 @@ public abstract class Genitals{
          return true;
       }  
       return false;
-   }  
-   
-   
+   }   
 }
